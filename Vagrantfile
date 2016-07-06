@@ -50,17 +50,13 @@ Vagrant::Config.run do |config|
       worker.ssh.forward_agent = true
 
       # bootstrapping
-      # hash[:commands].each do |c|
-      #   worker.vm.provision 'shell', inline: sprintf('echo running:[%s]', c)
-      #   worker.vm.provision 'shell', inline: c
-      # end
+      hash[:commands].each do |c|
+        worker.vm.provision 'shell', inline: sprintf('echo running:[%s]', c)
+        worker.vm.provision 'shell', inline: c
+      end
 
       # initial puppet run
-      worker.vm.provision 'puppet' do |puppet|
-        puppet.module_path = 'modules'
-        puppet.manifests_path = 'manifests'
-        puppet.manifest_file  = 'site.pp'
-      end
+      worker.vm.provision 'shell', inline: sprintf('puppet apply --modulepath %s --detailed-exitcodes %s', '/vagrant/modules', '/vagrant/manifests/site.pp')
 
     end
   end
