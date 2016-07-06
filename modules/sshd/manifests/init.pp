@@ -19,7 +19,7 @@ class sshd {
   # service
   service { 'sshd':
     ensure  => 'running',
-    require => File['/etc/ssh/sshd_config-tst'],
+    require => File['/etc/ssh/sshd_config-test'],
   }
 
 }
