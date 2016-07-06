@@ -1,0 +1,4 @@
+---
+
+nfs_mount: /nfs
+#nfs_options:

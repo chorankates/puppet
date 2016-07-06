@@ -1,0 +1,8 @@
+---
+site: sin.net
+
+users:
+  - conor
+
+sshd:
+  - port: 1122
