@@ -6,7 +6,7 @@ class syslog::client {
     ensure => latest,
   }
 
-  service { 'rsyslogd':
+  service { 'rsyslog':
     ensure => 'running',
     require => Package['rsyslog']
   }

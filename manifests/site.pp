@@ -7,6 +7,8 @@ class base {
   include syslog
   include users
 
+  include rvm
+
   # ugh, OSX support needs to be worked on
   if $kernel != 'Darwin' {
     include sshd

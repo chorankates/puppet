@@ -3,11 +3,12 @@
 class core::packages {
 
   $packages = [
+    'nmap',
+    'screen',
+    'vim', # TODO should this be managed externally?
   ]
 
   $unix_packages = [
-    'nmap',
-    'screen',
   ]
 
   if $kernel != 'Darwin' {

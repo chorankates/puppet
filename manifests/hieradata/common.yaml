@@ -5,4 +5,8 @@ users:
   - conor
 
 sshd:
-  - port: 1122
+  port: 1122
+
+syslog:
+  server: util # should probably be doing this by IP, but want to be flexible
+  port: 514

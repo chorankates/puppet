@@ -1,4 +1,9 @@
 ---
 
-nfs_mount: /nfs
+# TODO need some way to distinguish client/server - in this case, we are the server
+nfs:
+  mount: /nfs
+
+
+#nfs_mount: /nfs
 #nfs_options:
