@@ -2,14 +2,7 @@
 
 class syslog::client {
 
-  package { 'rsyslog':
-    ensure => latest,
-  }
-
-  service { 'rsyslog':
-    ensure => 'running',
-    require => Package['rsyslog']
-  }
-
+  # TODO pull the endpoint to send to from heira
+  notify { 'SYSLOG CLIENT NOT IMPLEMENTED': }
 
 }

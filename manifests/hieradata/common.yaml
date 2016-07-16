@@ -3,6 +3,7 @@ site: sin.net
 
 users:
   - conor
+    shell: /bin/bash
 
 sshd:
   port: 1122

@@ -14,6 +14,8 @@ rvm_system_ruby {
     default_use => true;
 }
 
+notify { 'NOT WORKING': }
+
 #rvm_gem {
 #  'bundler':
 #    name         => 'bundler',
