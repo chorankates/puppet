@@ -1,18 +1,24 @@
-stage { 'first':
-  before => 'main',
+# stage configuration (repos first)
+
+stage { 'first': }
+stage { 'last': }
+
+Stage['first'] -> Stage['main']
+Stage['main']  -> Stage['last']
+
+class { 'repos_package':
+  stage => Stage['first'],
 }
 
 ## top level configuration / specification
 class base {
 
-  class { 'repos_packages':
-    stage => 'first',
-  }
-
   include core
   include nagios
   include nfs
   include osquery
+  include puppet
+  include repos_package
   include rvm
   include squid
   #include sshd

@@ -5,6 +5,6 @@ class repos_git {
   # hued
   # h4ck
 
-  notify { 'GITREPOS NOT IMPLEMENTED': }
+  notify { 'REPOS GIT NOT IMPLEMENTED': }
 
 }

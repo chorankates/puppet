@@ -16,5 +16,4 @@ class core::cron {
     minute  => '0',
   }
 
-
 }

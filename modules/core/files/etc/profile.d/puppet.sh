@@ -1,5 +1,4 @@
 #!/bin/bash
 # puppet related aliases/functions
 
-alias prb='puppet apply --verbose --modulepath ~conor/git/puppet/modules/ ~conor/git/puppet/manifests/site.pp'
-alias prv='puppet apply --verbose --modulepath /vagrant/modules/ /vagrant/manifests/site.pp'
+alias par='puppet apply --verbose --modulepath /etc/puppet/modules/ /etc/puppet/manifests/site.pp'

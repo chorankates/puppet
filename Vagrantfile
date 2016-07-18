@@ -67,10 +67,13 @@ Vagrant::Config.run do |config|
         worker.vm.provision 'shell', inline: c
       end
 
+      # pathing
+      worker.vm.share_folder 'puppet', '/etc/puppet', '.'
+
       # initial puppet run
       [
         'puppet module install maestrodev-rvm',
-        sprintf('puppet apply --modulepath %s --verbose %s', '/vagrant/modules', '/vagrant/manifests/site.pp'),
+        sprintf('puppet apply --modulepath %s --verbose %s', '/etc/puppet/modules', '/etc/puppet/manifests/site.pp'),
       ].each do |c|
         worker.vm.provision 'shell', inline: sprintf('echo running:[%s]', c)
         worker.vm.provision 'shell', inline: c

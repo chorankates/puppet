@@ -1,5 +1,5 @@
 
-class repos_packages::centos {
+class repos_package::centos {
 
 #[epel]
 #name=Extra Packages for Enterprise Linux 6 - $basearch
@@ -8,6 +8,7 @@ class repos_packages::centos {
 #failovermethod=priority
 
   yumrepo { 'epel':
+    enabled => true,
     name    => 'Extra Packages for Enterprise Linux 6 - $basearch',
     baseurl => 'http://download.fedoraproject.org/pub/epel/6/$basearch',
   }
