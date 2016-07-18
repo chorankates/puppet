@@ -1,13 +1,11 @@
 # stage configuration (repos first)
 
-stage { 'first': }
-stage { 'last': }
-
-Stage['first'] -> Stage['main']
-Stage['main']  -> Stage['last']
+stage { 'first':
+  before => Stage["main"],
+}
 
 class { 'repos_package':
-  stage => Stage['first'],
+  stage => 'first',
 }
 
 ## top level configuration / specification
