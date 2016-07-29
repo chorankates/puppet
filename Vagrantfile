@@ -46,7 +46,18 @@ Vagrant::Config.run do |config|
 
       worker.vm.box            = hash[:image].to_s
       worker.vm.box_url        = images[hash[:image]]
-      worker.vm.host_name      = name.to_s
+
+      # i hate you so much ubuntu
+      # https://github.com/mitchellh/vagrant/issues/5673
+      if hash[:image].match(/ubuntu/)
+        worker.vm.provision 'shell', inline: "hostnamectl set-hostname #{name.to_s}"
+        worker.vm.provision 'shell', inline: "INTERFACE=eth0 MATCHADDR=enp0s3 /lib/udev/write_net_rules"
+        worker.vm.provision 'shell', inline: "INTERFACE=eth1 MATCHADDR=enp0s8 /lib/udev/write_net_rules"
+      else
+        worker.vm.host_name = name.to_s
+      end
+
+
       worker.vm.network        :hostonly, sprintf('10.0.1.%s', hash[:ip])
       worker.ssh.forward_agent = true
 
@@ -56,10 +67,13 @@ Vagrant::Config.run do |config|
         worker.vm.provision 'shell', inline: c
       end
 
+      # pathing
+      worker.vm.share_folder 'puppet', '/etc/puppet', '.'
+
       # initial puppet run
       [
         'puppet module install maestrodev-rvm',
-        sprintf('puppet apply --modulepath %s --verbose %s', '/vagrant/modules', '/vagrant/manifests/site.pp'),
+        sprintf('puppet apply --modulepath %s --verbose %s', '/etc/puppet/modules', '/etc/puppet/manifests/site.pp'),
       ].each do |c|
         worker.vm.provision 'shell', inline: sprintf('echo running:[%s]', c)
         worker.vm.provision 'shell', inline: c
