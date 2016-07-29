@@ -7,9 +7,22 @@ class users {
   user { 'conor':
     home  => '/home/conor',
     shell => '/bin/bash'
-    # TODO passwordless sudo
     # TODO create home dir
   }
+
+  # TODO this should be generic, able to enable per user and in the users::add method
+  augeas { 'sudoers_conor':
+    context => '/files/etc/sudoers',
+    changes => [
+      "set spec[user ='conor']/user conor",
+      "set spec[user ='conor']/host ALL",
+      "set spec[user ='conor']/command ALL",
+      "set spec[user ='conor']/command/runas_user root",
+      "set spec[user ='conor']/command/tag NOPASSWD",
+    ],
+    require => User['conor'],
+  }
+
 
 #  users::add { 'foo':
 #    username => 'foo',
