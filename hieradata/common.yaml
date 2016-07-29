@@ -5,6 +5,9 @@ users:
   - conor
     shell: /bin/bash
 
+squid:
+  port: 3128
+
 sshd:
   port: 1122
 
