@@ -1,5 +1,5 @@
 
 class repos_package::ubuntu {
 
-  notify { 'REPOS PACKAGE NOT IMPLEMENTED': }
+  notify { 'UBUNTU REPOS PACKAGE NOT IMPLEMENTED': }
 }

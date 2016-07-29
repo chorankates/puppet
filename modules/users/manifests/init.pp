@@ -7,10 +7,8 @@ class users {
   user { 'conor':
     home  => '/home/conor',
     shell => '/bin/bash'
-    # TODO sudo
+    # TODO passwordless sudo
     # TODO create home dir
-    # TODO generate SSH keys
-    # TODO pull in /etc/tmux.conf -- am really going to need all dotfiles, but auth is an issue here
   }
 
 #  users::add { 'foo':
@@ -29,5 +27,6 @@ class users {
 #      managehome => true,
 #      #password   => $password_hash,
 #    }
+#    # TODO an exec to generate ssh keys
 #  }
 }

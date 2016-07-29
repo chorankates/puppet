@@ -3,13 +3,14 @@
 class core::packages {
 
   $packages = [
+    'augeas',
     'git',
     'irssi',
     'lynx',
     'nmap',
     'screen',
-    'tmux', # TODO need to figure out how to link this up with dotfiles
-    'vim', # TODO should this be managed externally?
+    'tmux',
+    'vim',
     #'wireshark', # TODO this will pull in X dependencies on headless machines
   ]
 
