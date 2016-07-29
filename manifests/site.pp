@@ -19,7 +19,7 @@ class base {
   include repos_package
   include rvm
   include squid
-  #include sshd
+  include sshd
   include syslog
   include users
 }
@@ -28,7 +28,7 @@ class base {
 node 'util' {
   include base
 
-  #include nfs
+  include nfs
   include rvm
   include repos_git
 
