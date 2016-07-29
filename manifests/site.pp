@@ -22,7 +22,7 @@ node 'util' {
 
   include nagios::server
 
-  include nfs
+  #include nfs
   include rvm
 
   include syslog::server
