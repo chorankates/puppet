@@ -1,18 +1,12 @@
-#
+# these aren't really dependent on each other (wrt puppet ordering), not bothering
+# TODO need to read values out of hiera instead of hardcoding
 
 class syslog::server {
 
-  # TODO use augeas to modify
-  notify { 'SYSLOG CLIENT NOT IMPLEMENTED': }
-
-  # /etc/rsyslog.conf needs to have these:
-  # provides UDP syslog reception
-  #module(load="imudp")
-  #input(type="imudp" port="514")
-
-  # provides TCP syslog reception
-  #module(load="imtcp")
-  #input(type="imtcp" port="514")
-
+  file { '/etc/rsyslog.conf':
+    ensure => 'file',
+    mode   => '0644',
+    source => 'puppet:///modules/syslog/etc/rsyslog.conf',
+  }
 
 }
