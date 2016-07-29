@@ -26,6 +26,8 @@ class sshd {
       'set LogLevel VERBOSE',
       'set PermitRootLogin without-password', # poorly phrased, really means only key based auth for root
       "set Port ${sshd_port}",
+      "set PubkeyAceeptedKeyTypes ssh-dss ssh-rsa",
+      "set AuthorizedKeysFile %h/.ssh/authorized_keys",
     ],
     notify => Service['sshd'],
   }
